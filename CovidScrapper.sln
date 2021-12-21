@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovidScrapper", "CovidScrapper\CovidScrapper.csproj", "{15967789-5B20-4201-BA0C-B8F46386F19D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{15967789-5B20-4201-BA0C-B8F46386F19D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15967789-5B20-4201-BA0C-B8F46386F19D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15967789-5B20-4201-BA0C-B8F46386F19D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15967789-5B20-4201-BA0C-B8F46386F19D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6263B0EF-6781-4EB0-888C-E5823459BC8D}
+	EndGlobalSection
+EndGlobal
