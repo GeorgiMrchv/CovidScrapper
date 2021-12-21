@@ -31,7 +31,7 @@ namespace CovidScrapper
             {
                 throw new IndexOutOfRangeException("Wrong region has been typed.");
             }
-            return continentName;  
+            return continentName;
 
         }
 
@@ -41,15 +41,15 @@ namespace CovidScrapper
 
             HtmlDocument doc = web.Load("https://www.worldometers.info/coronavirus/");
 
-            var headerNames = doc.DocumentNode.SelectNodes("//table[@id='main_table_countries_today']//tbody//tr");
+            var extractedData = doc.DocumentNode.SelectNodes("//table[@id='main_table_countries_today']//tbody//tr");
 
-            List<List<string>> headerList = new List<List<string>>();
+            List<List<string>> regionCollection = new List<List<string>>();
 
-            foreach (var headerName in headerNames)
+            foreach (var item in extractedData)
             {
-                if (headerName.InnerHtml.Contains(continentName))
+                if (item.InnerHtml.Contains(continentName))
                 {
-                    headerList.Add(headerName.InnerText.Split("\n").Take(16).ToList());
+                    regionCollection.Add(item.InnerText.Split("\n").Take(16).ToList());
 
                 }
 
@@ -57,18 +57,18 @@ namespace CovidScrapper
 
             if (string.IsNullOrEmpty(continentName))
             {
-                headerList.RemoveRange(0,8); // to check 7 and 15 or other
-                headerList.RemoveRange(223,9);
+                regionCollection.RemoveRange(0, 8);
+                regionCollection.RemoveRange(223, 9);
                 continentName = "All";
             }
             else
             {
 
-                headerList.RemoveAt(0);
-                headerList.RemoveAt(headerList.Count - 1);
+                regionCollection.RemoveAt(0);
+                regionCollection.RemoveAt(regionCollection.Count - 1);
             }
 
-            return headerList;
+            return regionCollection;
         }
 
         public List<CovidStatistics> PopulateDatabse(List<List<string>> headerList, string continentName)
@@ -116,7 +116,7 @@ namespace CovidScrapper
             {
                 continentName = "All";
             }
-            using (var writer = new StreamWriter(@"C:\Users\geomi\Desktop\blankfactor\export_" + continentName  + "_(" + DateTime.Now.ToString("yy_MM_dd") + ").csv"))
+            using (var writer = new StreamWriter(@"C:\Users\geomi\Desktop\blankfactor\export_" + continentName + "_(" + DateTime.Now.ToString("yy_MM_dd") + ").csv"))
             {
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {

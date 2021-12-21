@@ -8,8 +8,8 @@ namespace CovidScrapper
         {
             Scrapper scrapper = new Scrapper();
             string continentName = scrapper.TypeRegion();
-            List<List<string>> headerList = scrapper.GetData(continentName);
-            var data = scrapper.PopulateDatabse(headerList, continentName);
+            List<List<string>> extractedData = scrapper.GetData(continentName);
+            var data = scrapper.PopulateDatabse(extractedData, continentName);
             scrapper.GenerateCSVFile(data, continentName);
             scrapper.GenerateConsoleTable(data);
 
